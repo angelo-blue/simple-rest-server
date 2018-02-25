@@ -11,6 +11,7 @@ public class SomeRoute extends ExternalRoute {
 
     @Override
     public void configure() throws Exception {
+		super.configure();
         // uncomment to see if the route runs
     		//from("timer:foo")
         //  .to("log:bar");
