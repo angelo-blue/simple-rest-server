@@ -5,8 +5,6 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mike.sandpit.routeHelpers.RouteLoggingProperties;
-
 public abstract class ExternalRoute extends RouteBuilder {
 	private static final Logger logger = LogManager.getLogger(ExternalRoute.class);
 
@@ -29,6 +27,7 @@ public abstract class ExternalRoute extends RouteBuilder {
 				rlp.exception = cause.getMessage();
 				rlp.finish();
 			}
+			exchange.getOut().setHeader(Exchange.HTTP_RESPONSE_CODE, 500L);
 		}
 	};
 

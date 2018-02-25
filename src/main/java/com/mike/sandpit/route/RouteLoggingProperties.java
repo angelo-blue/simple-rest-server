@@ -1,4 +1,4 @@
-package com.mike.sandpit.routeHelpers;
+package com.mike.sandpit.route;
 
 import java.time.ZonedDateTime;
 
