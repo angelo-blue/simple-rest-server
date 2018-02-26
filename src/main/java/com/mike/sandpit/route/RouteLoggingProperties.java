@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import com.mike.sandpit.util.SandpitDateUtils;
 
 public class RouteLoggingProperties {
-	private static final Logger logger = LogManager.getLogger(RouteLoggingProperties.class);
+	private static final Logger routeLogger = LogManager.getLogger("RouteLogger");
 
 	public ZonedDateTime start;
 	public ZonedDateTime end;
@@ -27,7 +27,7 @@ public class RouteLoggingProperties {
 	public void finish() {
 		SandpitDateUtils sdu = new SandpitDateUtils();
 		end = sdu.getNow();
-		logger.info(String.format(logPattern, routeName, sdu.getISOString(start), sdu.getISOString(end)));
+		routeLogger.info(String.format(logPattern, routeName, sdu.getISOString(start), sdu.getISOString(end)));
 	}
 
 }

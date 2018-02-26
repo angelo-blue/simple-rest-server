@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class ExternalRoute extends RouteBuilder {
 	private static final Logger logger = LogManager.getLogger(ExternalRoute.class);
-
 	protected static String exchangePropertyRLP = "RouteLoggingProperties";
 
     @Override
