@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.mike.sandpit.blah.json.BlahResponse;
 import com.mike.sandpit.blah.service.BlahService;
+import com.mike.sandpit.route.BackendCall;
 import com.mike.sandpit.route.ExternalRoute;
 
 @Component
@@ -30,7 +31,11 @@ public class BlahRoute extends ExternalRoute {
 
         from("direct:blah")
           .process(startExternalRoute("Blah"))
-          .setBody(constant("back at you"))
+
+          //.setHeader(Exchange.HTTP_PATH, constant("blah"))
+          //.to("direct:backendStub")
+          .setProperty("backendCall", method(BlahRoute.class, "createBackendCall"))
+          .to("direct:backendCall")
 
           .setBody(method(blahService, "create"))
           .marshal().json(JsonLibrary.Jackson)
@@ -39,5 +44,12 @@ public class BlahRoute extends ExternalRoute {
 
           .log("in direct blah");
     }
+
+	public BackendCall createBackendCall() {
+		BackendCall bc = new BackendCall();
+		bc.httpPath = "blah";
+		bc.useCache = true;
+		return bc;
+	}
 
 }

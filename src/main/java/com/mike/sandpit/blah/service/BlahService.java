@@ -1,5 +1,6 @@
 package com.mike.sandpit.blah.service;
 
+import org.apache.camel.Body;
 import org.springframework.stereotype.Service;
 
 import com.mike.sandpit.blah.json.BlahResponse;
@@ -7,9 +8,13 @@ import com.mike.sandpit.blah.json.BlahResponse;
 @Service
 public class BlahService {
 
-	public BlahResponse create() {
+	/**
+	 * @param backendReponse
+	 * @return front-end BlahResponse
+	 */
+	public BlahResponse create(@Body String backendReponse) {
 		BlahResponse result = new BlahResponse();
-		result.message = "Back at you!";
+		result.message = backendReponse;
 		return result;
 	}
 }
