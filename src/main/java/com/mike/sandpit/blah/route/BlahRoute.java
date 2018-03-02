@@ -10,11 +10,13 @@ import com.mike.sandpit.blah.service.BlahService;
 import com.mike.sandpit.route.BackendCall;
 import com.mike.sandpit.route.ExternalRoute;
 
+/**
+ * Custom route to handle the blah function.
+ * @author mike
+ */
 @Component
 public class BlahRoute extends ExternalRoute {
 	private static final Logger logger = LogManager.getLogger(BlahRoute.class);
-
-	public static String exchangePropertyRLP = "RouteLoggingProperties";
 
 	@Autowired
 	private BlahService blahService;
@@ -27,22 +29,21 @@ public class BlahRoute extends ExternalRoute {
         //  .to("log:bar");
 
         rest("blah")
-        	.get("v1").outType(BlahResponse.class).to("direct:blah");
+        	  .get("v1").outType(BlahResponse.class).to("direct:blah");
 
         from("direct:blah")
           .process(startExternalRoute("Blah"))
 
-          //.setHeader(Exchange.HTTP_PATH, constant("blah"))
-          //.to("direct:backendStub")
+          // setup rest call to backend
           .setProperty("backendCall", method(BlahRoute.class, "createBackendCall"))
           .to("direct:backendCall")
 
-          .setBody(method(blahService, "create"))
+          // transform to client response
+          .setBody(method(blahService, "createClientResponse"))
           .marshal().json(JsonLibrary.Jackson)
 
           .process(endExternalRoute())
-
-          .log("in direct blah");
+          ;
     }
 
 	public BackendCall createBackendCall() {

@@ -7,6 +7,11 @@ import org.apache.logging.log4j.Logger;
 
 import com.mike.sandpit.util.SandpitDateUtils;
 
+/**
+ * Use this class to log the standard route calls.  
+ * @author mike
+ *
+ */
 public class RouteLoggingProperties {
 	private static final Logger routeLogger = LogManager.getLogger("RouteLogger");
 
@@ -15,7 +20,8 @@ public class RouteLoggingProperties {
 	public String routeName;
 	public String exception;
 	private String logPattern = "route:%s start:%s end:%s";
-
+	private String logPatternWithException = "route:%s start:%s end:%s error:%s";
+	
 	public static RouteLoggingProperties start(String routeName) {
 		SandpitDateUtils sdu = new SandpitDateUtils();
 		RouteLoggingProperties rlp = new RouteLoggingProperties();
@@ -27,7 +33,11 @@ public class RouteLoggingProperties {
 	public void finish() {
 		SandpitDateUtils sdu = new SandpitDateUtils();
 		end = sdu.getNow();
-		routeLogger.info(String.format(logPattern, routeName, sdu.getISOString(start), sdu.getISOString(end)));
+		if (exception == null) {
+			routeLogger.info(String.format(logPattern, routeName, sdu.getISOString(start), sdu.getISOString(end)));
+		} else {
+			routeLogger.info(String.format(logPatternWithException, routeName, sdu.getISOString(start), sdu.getISOString(end), exception));
+		}
 	}
 
 }

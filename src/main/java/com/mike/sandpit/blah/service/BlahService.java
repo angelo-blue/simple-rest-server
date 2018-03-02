@@ -11,8 +11,9 @@ public class BlahService {
 	/**
 	 * @param backendReponse
 	 * @return front-end BlahResponse
+	 * @throws Exception 
 	 */
-	public BlahResponse create(@Body String backendReponse) {
+	public BlahResponse createClientResponse(@Body String backendReponse) throws Exception {
 		BlahResponse result = new BlahResponse();
 		result.message = backendReponse;
 		return result;
