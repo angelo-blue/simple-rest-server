@@ -5,6 +5,12 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * All routes exposing front-end rest calls should extend this class.
+ * A global exception handler will catch any exceptions and return http 500.  
+ * @author mike
+ *
+ */
 public abstract class ExternalRoute extends RouteBuilder {
 	private static final Logger logger = LogManager.getLogger(ExternalRoute.class);
 	protected static String exchangePropertyRLP = "RouteLoggingProperties";
@@ -14,6 +20,7 @@ public abstract class ExternalRoute extends RouteBuilder {
         
     		onException(Exception.class)
     			.process(handleGenericException)
+    			.handled(true)
         ;
     }
 

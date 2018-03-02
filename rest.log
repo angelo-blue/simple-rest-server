@@ -8,3 +8,8 @@
 2018-03-01 19:54:29.211 [http-nio-8080-exec-2] INFO  RouteLogger - route:Blah start:2018-03-01T19:54:29.209+13:00[NZ] end:2018-03-01T19:54:29.211+13:00[NZ]
 2018-03-01 20:07:07.804 [http-nio-8080-exec-1] INFO  RouteLogger - route:Blah start:2018-03-01T20:07:07.58+13:00[NZ] end:2018-03-01T20:07:07.799+13:00[NZ]
 2018-03-01 20:10:26.897 [Camel (camel-1) thread #1 - backendthreadpool] INFO  RouteLogger - route:Blah start:2018-03-01T20:10:26.82+13:00[NZ] end:2018-03-01T20:10:26.89+13:00[NZ]
+2018-03-02 20:23:41.738 [Camel (camel-1) thread #1 - backendthreadpool] INFO  RouteLogger - route:Blah start:2018-03-02T20:23:41.475+13:00[NZ] end:2018-03-02T20:23:41.734+13:00[NZ]
+2018-03-02 20:35:06.673 [Camel (camel-1) thread #1 - backendthreadpool] INFO  RouteLogger - route:Blah start:2018-03-02T20:35:06.449+13:00[NZ] end:2018-03-02T20:35:06.669+13:00[NZ]
+2018-03-02 20:36:08.006 [Camel (camel-1) thread #2 - backendthreadpool] INFO  RouteLogger - route:Blah start:2018-03-02T20:36:08.004+13:00[NZ] end:2018-03-02T20:36:08.006+13:00[NZ]
+2018-03-02 20:41:29.604 [Camel (camel-1) thread #1 - backendthreadpool] INFO  RouteLogger - route:Blah start:2018-03-02T20:41:29.359+13:00[NZ] end:2018-03-02T20:41:29.599+13:00[NZ] error:Hi Mike
+2018-03-02 20:42:40.293 [Camel (camel-1) thread #1 - backendthreadpool] INFO  RouteLogger - route:Blah start:2018-03-02T20:42:39.985+13:00[NZ] end:2018-03-02T20:42:40.288+13:00[NZ]

@@ -6,6 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+/**
+ * calls the backend api.  allows for caching and thread pooling.  
+ * @author mike
+ */
 @Component
 public class BackendRoute extends RouteBuilder {
 	private static final Logger logger = LogManager.getLogger(BackendRoute.class);
