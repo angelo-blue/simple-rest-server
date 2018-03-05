@@ -12,9 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.mike.sandpit.route.BackendCall;
 
+/**
+ * Tests the BlahRoute (only) and mocks the producers.  
+ * @author mike
+ */
 @RunWith(CamelSpringBootRunner.class)
 @SpringBootTest
-// do not make the actual backend call
+// need skip otherwise it mocks 'as well as running', rather than 'instead of running'.    
 @MockEndpointsAndSkip("direct:backendCall")
 public class BlahRouteTest {
 
@@ -31,7 +35,11 @@ public class BlahRouteTest {
 	    bc.useCache = true;
 	    mockCamel.expectedMessageCount(1);
 	    mockCamel.expectedPropertyReceived("backendCall", bc);
+	    
+	    // call the route
 	    producerTemplate.sendBody("direct:blah", null);
+	    
+	    // test
 	    mockCamel.assertIsSatisfied();
 	  }
 }
